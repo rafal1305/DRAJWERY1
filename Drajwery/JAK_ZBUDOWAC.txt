@@ -1,0 +1,21 @@
+BUDOWANIE I TESTOWANIE BEZ INSTALOWANIA NICZEGO NA KOMPUTERZE (GitHub Actions)
+1. Załóż darmowe konto na github.com i utwórz nowe repozytorium.
+2. Wypakuj ten plik i wgraj CAŁĄ zawartość folderu Drajwery (z ukrytym folderem .github) do repozytorium.
+3. Zakładka Actions -> "Build + testy na emulatorze". Dwa zadania uruchamiają się same:
+   - build: testy jednostkowe + plik APK (artefakt "Drajwery-apk"),
+   - emulator: wirtualny telefon Pixel 6 z Androidem 14 uruchamia testy interfejsu i jazdy
+     (artefakty: "zrzuty-ekranu-z-emulatora" oraz raporty testów).
+4. Pobierz app-debug.apk, wyślij na telefon, zezwól na instalację z nieznanych źródeł, przy starcie zezwól na lokalizację.
+
+USTAWIENIA (opcjonalne; w repozytorium: Settings -> Secrets and variables -> Actions)
+- CONTACT_EMAIL  - Twój e-mail wpisywany w User-Agent (Nominatim tego wymaga).
+- TOMTOM_KEY     - klucz TomTom: ruch drogowy na żywo, omijanie zamknięć, ciężarówka/dostawczy/rower.
+Lokalnie te same nazwy wpisz w pliku local.properties (patrz local.properties.example). NIE wrzucaj go do repozytorium.
+
+TRYB DEMO: Ustawienia -> "Tryb demo (bez internetu)" - działa bez sieci na sztucznych współrzędnych.
+
+WYDANIE (podpis): ustaw zmienne KEYSTORE_PATH, KEYSTORE_PASSWORD, KEY_ALIAS, KEY_PASSWORD i uruchom `gradle :app:assembleRelease`.
+Alternatywa: Android Studio -> Open -> folder Drajwery -> Build > Build APK(s).
+
+CZCIONKA: napis DRAJWERY i nagłówki używają czcionki Big Shoulders (licencja SIL OFL, tekst w app/src/main/assets/licenses).
+POŁĄCZENIE Z INTERNETEM: aplikacja używa zwykłego dostępu do sieci telefonu (uprawnienie INTERNET); niczego dodatkowo nie instaluje.

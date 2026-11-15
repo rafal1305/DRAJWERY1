@@ -1,0 +1,14 @@
+CO JEST PRZETESTOWANE I JAK TO URUCHOMIĆ
+Testy jednostkowe (JVM, bez telefonu):  gradle :app:testDebugUnitTest
+  RoutingTest, LogicTest: optymalizator (dokładny i heurystyczny), terminy, harmonogram godzin, CSV, podział na trasy,
+  wskazówki głosowe i EDYCJA ICH TREŚCI (np. „za 300m skręć w lewo”), dziennik jazdy (przejechane km, czas jazdy i postoju,
+  skok GPS), historia odwiedzonych adresów (zapis, podpowiedzi, wyłączenie, limit 300), wykrywanie zboczenia,
+  odczyt odpowiedzi OSRM, zapis JSON ustawień/sesji/historii, tryb demo.
+Testy na emulatorze (sztuczny telefon):  gradle :app:connectedDebugAndroidTest   (wymaga uruchomionego emulatora)
+  UiFlowTest  - ekran startowy z nazwą DRAJWERY, wpisywanie adresów, suma km, terminy, import 60 adresów, bez mety / wróć do startu,
+                mapa, okno podsumowania z symbolami tachografu, nazwa użytkownika, podpowiedzi z historii adresów.
+  NavFlowTest - symulowany GPS: przejazd przez przystanki, zboczenie -> przeliczenie, zablokowana droga -> objazd,
+                niedokładne odczyty, dodanie przystanku w jeździe, wznowienie jazdy, PODSUMOWANIE TRASY (km, jazda, postój,
+                stan licznika), zapis odwiedzonych adresów i brak zapisu po wyłączeniu.
+Na GitHubie oba zestawy odpalają się automatycznie (.github/workflows/build.yml); zrzuty ekranu lądują w artefaktach.
+Podgląd wyglądu tła i ekranu startowego: docs/podglad-ekran-startowy.png (obraz poglądowy, wygenerowany osobno).
